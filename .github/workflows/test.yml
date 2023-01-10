@@ -1,6 +1,6 @@
 name: Test
 on:
-  workflow_dispatch:
+  push:
 jobs:
   tests:
     strategy:
@@ -14,4 +14,5 @@ jobs:
       # with:
       #   nix_path: nixpkgs=channel:nixos-unstable
     - run: nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+    - run: nix-channel --update
     - run: nix-shell . -A install
